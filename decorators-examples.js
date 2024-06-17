@@ -89,3 +89,25 @@ class NumberRange {
         return `${num} is a valid number in the range!`;
     }
 }
+
+
+
+// Creating a Simple Parameter Decorator
+
+// A parameter decorator is a function that is called at runtime and receives the following three arguments:
+
+// target: The prototype of the class (for instance methods) or the constructor function (for static methods) of the class.
+// key: The name of the method in which the parameter is used.
+// index: The zero-based index of the parameter in the method's parameter list.
+
+function logParameter(target, key, index) {
+    const functionName = key || target.constructor.name;
+    console.log(`The parameter in position ${index} at ${functionName} has been decorated`);
+}
+
+class Greeter {
+    // Can only be applied to a parameter in typescript
+    greet(@logParameter message) {
+        console.log(message);
+    }
+}
